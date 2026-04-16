@@ -2,19 +2,19 @@ name: 'Terraform container actions'
 description: 'Terrform action for demos'
 author: mattallen889@
 inputs:
-  ARM_CLIENT_ID: 3450eb34-fc06-4e7b-bd58-3ccab20b1dab
+  ARM_CLIENT_ID: 
     description: 'AZ client id'
     required: true
-  ARM_CLIENT_SECRET: vvA8Q~iFKPcBMHPbqzlZAOS7pegv-JZ5WuVMNbhR
+  ARM_CLIENT_SECRET:
     description: 'Azure client secret'
     required: true
-  ARM_SUBSCRIPTION_ID: f9dd3451-71c1-4bd8-84f8-c83195ce534e
+  ARM_SUBSCRIPTION_ID:
     description: 'Azure subscription id'
     required: true
-  ARM_TENANT_ID: dd3020d8-759c-49c5-8663-76c531dca38f
+  ARM_TENANT_ID: 
     description: 'Azure tenant id'
     required: true
-  STATE_KEY: mattallen
+  STATE_KEY: 
     description: 'Unique value to identify your state slice'
     required: true
   TF_STAGE:
