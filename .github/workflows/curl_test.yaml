@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 permissions: {}
 jobs:
-  build-and-curl:
+    build-and-curl:
     runs-on: ubunti-latest
     steps:
     - name: get_code
