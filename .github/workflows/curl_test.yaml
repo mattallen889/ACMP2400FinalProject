@@ -3,20 +3,20 @@ on:
   workflow_dispatch:
 permissions: {}
 jobs:
-    build-and-curl:
-    runs-on: ubunti-latest
+  build-and-curl:
+    runs-on: ubuntu-latest
     steps:
-    - name: get_code
-      uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 #v6
-    - name: docker_build
-      run: |
-        docker build -t pipeline-test
-    - name: docker_run
-    env:
-      DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
-    run: |
-      docker run -d -p 8000:8000 -e 'DJANGO_SECRET_KEY="$DJANGO_SECRET_KEY"' pipeline-test
-    - name: curl_ftw
-    run: |
-      sleep 10
-      curl -f http://localhost:8000/
+      - name: get_code
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 
+      - name: docker_build
+        run: |
+          docker build -t pipeline-test .
+      - name: docker_run
+        env:
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+        run: |
+          docker run -d -p 8000:8000 -e DJANGO_SECRET_KEY="$DJANGO_SECRET_KEY" pipeline-test
+      - name: curl_ftw
+        run: |
+          sleep 10
+          curl -f http://localhost:8000/
