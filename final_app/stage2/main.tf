@@ -49,7 +49,7 @@ resource "azurerm_container_group" "mattallen-aci" {
     protocol = "TCP"
   }
 
-  secure_environment_variable = {
+  secure_environment_variables = {
     DJANGO_SECRET_KEY = var.DJANGO_SECRET_KEY_PROD
   }
     
