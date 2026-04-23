@@ -24,4 +24,3 @@ resource "azurerm_container_registry" "mattallen-acr" {
   sku = "Basic"
   admin_enabled = false
   }
-}
