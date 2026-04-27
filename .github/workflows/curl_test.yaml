@@ -67,8 +67,8 @@ jobs:
     - name: docker_build_tag_push
       run: |
         docker build -t application-final .
-        docker tag application-final acrmattallenacmp2400.azurecr.io/final
-        docker push acrmattallenacmp2400.azurecr.io/final
+        docker tag application-final mattallenacmp2400.azurecr.io/final
+        docker push mattallenacmp2400.azurecr.io/final
 
   terraform-stage-2:
     needs: build-tag-push
