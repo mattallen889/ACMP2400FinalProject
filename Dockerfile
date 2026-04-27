@@ -2,7 +2,7 @@ FROM python:3.13.13-slim-trxie@sha256:2ba73a4dc380f21137fc75296abfa2add90b51fd10
 
 WORKDIR /app
 
-COPY requirements.txt
+COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
