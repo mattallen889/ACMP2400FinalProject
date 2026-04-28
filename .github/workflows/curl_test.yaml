@@ -52,7 +52,11 @@ jobs:
         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
         STATE_KEY: 'mattallen'
         TF_STAGE: 'final_app/stage1'
-    
+    #temp
+    - name: verify_acr_dns
+      run: |
+        nslookup acrmattallenacmp2400.azurecr.io
+
   build-tag-push:
     needs: terraform-stage-1
     runs-on: ubuntu-latest
