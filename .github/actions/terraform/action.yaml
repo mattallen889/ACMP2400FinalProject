@@ -1,6 +1,6 @@
 name: 'Terraform container actions'
 description: 'Terraform action for demos'
-author: 'mattallen889@'
+author: 'mattallen889'
 inputs:
   ARM_CLIENT_ID: 
     description: 'AZ client id'
