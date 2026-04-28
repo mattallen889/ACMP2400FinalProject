@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
-      version = "4.69.0"
+      version = "4.68.0"
     }
   }
   backend "azurerm" {
@@ -17,7 +17,7 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_container_registry" "mattallen_acr" {
+resource "azurerm_container_registry" "mattallen-acr" {
   name = "acrmattallenacmp2400"
   resource_group_name = "rg-mattallen"
   location = "Central US"
