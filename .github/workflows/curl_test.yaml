@@ -1,6 +1,6 @@
 name: Build and Curl
 on:
-  workflow_dispatch
+  workflow_dispatch:
 permissions: {}
 jobs:
   build-and-curl:
@@ -16,7 +16,7 @@ jobs:
           DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         run: |
           echo "$DJANGO_SECRET_KEY"
-          docker run -d -p 8000:8000 -e 'DJANGO_SECRET_KEY="$DJANGO_SECRET_KEY"' pipeline-test
+          docker run -d -p 8000:8000 -e DJANGO_SECRET_KEY="$DJANGO_SECRET_KEY" pipeline-test
       - name: curl_ftw
         run: |
           sleep 10
@@ -51,7 +51,7 @@ jobs:
         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
         STATE_KEY: 'mattallen'
-        TF_STAGE: 'stage1'
+        TF_STAGE: 'final_app/stage1'
 
   build-tag-push:
     needs: terraform-stage-1
@@ -85,7 +85,7 @@ jobs:
         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
         STATE_KEY: 'mattallen'
-        TF_STAGE: 'stage2'
+        TF_STAGE: 'final_app/stage2'
         DJANGO_SECRET_KEY_PROD: ${{ secrets.DJANGO_SECRET_KEY_PROD }}
 
   pre-eval:
@@ -96,7 +96,7 @@ jobs:
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
     - name: get_container_dns
       run: |
-        cd stage2/
+        cd final_app/stage2/
         prefix=$(grep 'dns_name_label' main.tf | cut -d '=' -f2 | tr -d '"' | xargs)
         sleep 50
         curl -f http://$prefix.centralus.azurecontainer.io:8000
@@ -116,7 +116,7 @@ jobs:
         ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
         ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
         STATE_KEY: 'mattallen'
-        TF_STAGE: 'stage3'
+        TF_STAGE: 'final_app/stage3'
     
         
         
