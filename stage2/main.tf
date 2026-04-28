@@ -56,7 +56,7 @@ resource "azurerm_container_group" "aci-mattallen-acmp" {
     }
   }
 
-  image_registry_credentials {
+  image_registry_credential {
     server   = "acrmattallen889acmp2400.azurecr.io"
     username = var.ARM_CLIENT_ID
     password = var.ARM_CLIENT_SECRET
