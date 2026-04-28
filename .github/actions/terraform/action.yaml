@@ -24,7 +24,7 @@ inputs:
     description: 'The secret key for django to start'
     required: false
 runs:
-  using: docker
+  using: 'docker'
   image: 'Dockerfile'
 
   
