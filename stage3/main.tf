@@ -13,6 +13,6 @@ terraform {
   }
 }
 
-provider "azirerm" {
+provider "azurerm" {
   features {}
 }
