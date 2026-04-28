@@ -8,10 +8,10 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/h
 
 RUN apt-get update && apt-get install -y terraform
 
-WORKDIR /github/workspace
+WORKDIR /app
 
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh .
 
-RUN chmod +x /entrypoint.sh
+RUN chmod +x entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
