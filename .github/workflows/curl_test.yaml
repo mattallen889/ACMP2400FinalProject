@@ -96,7 +96,7 @@ jobs:
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
     - name: get_container_dns
       run: |
-        cd final_app/stage2/
+        cd stage2/
         prefix=$(grep 'dns_name_label' main.tf | cut -d '=' -f2 | tr -d '"' | xargs)
         sleep 50
         curl -f http://$prefix.centralus.azurecontainer.io:8000
