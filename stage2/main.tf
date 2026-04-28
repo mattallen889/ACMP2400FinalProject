@@ -50,14 +50,15 @@ resource "azurerm_container_group" "aci-mattallen-acmp" {
       port = 8000
       protocol = "TCP"
     }
+
     secure_environment_variables = {
-        DJANGO_SECRET_KEY = var.DJANGO_SECRET_KEY_PROD
+      DJANGO_SECRET_KEY = var.DJANGO_SECRET_KEY_PROD
+    }
   }
-  
+
   image_registry_credentials {
-    server = "acrmattallen889acmp2400.azurecr.io"
+    server   = "acrmattallen889acmp2400.azurecr.io"
     username = var.ARM_CLIENT_ID
     password = var.ARM_CLIENT_SECRET
   }
-}
 }
