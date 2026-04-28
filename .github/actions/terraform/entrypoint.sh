@@ -3,7 +3,7 @@
 set -e
 
 export ARM_CLIENT_ID=${INPUT_ARM_CLIENT_ID}
-export ARM_CLIENT_SECRET=${INPUT_ARM_CLIENT_SECRET}
+export ARM_CLIENT_SECRET=${INPUT_ARM_CLIENT_SECRET_ID}
 export ARM_SUBSCRIPTION_ID=${INPUT_ARM_SUBSCRIPTION_ID}
 export ARM_TENANT_ID=${INPUT_ARM_TENANT_ID}
 export DEV_STATE_KEY=${INPUT_STATE_KEY}
@@ -12,13 +12,13 @@ export DJANGO_SECRET_KEY_PROD=${INPUT_DJANGO_SECRET_KEY_PROD}
 
 if [[ "$TF_STAGE" == "final_app/stage1" ]]; then
   terraform -chdir=${INPUT_TF_STAGE} init -backend-config="key=${INPUT_STATE_KEY}.tfstate"
-  terraform -chdir=${INPUT_TF_STAGE} plan -out=tfplan
-  terraform -chdir=${INPUT_TF_STAGE} apply tfplan
+  terraform -chdir=${INPUT_TF_STAGE} plan -out=${INPUT_TF_STAGE}.tfplan
+  terraform -chdir=${INPUT_TF_STAGE} apply ${INPUT_TF_STAGE}.tfplan
 elif [[ "$TF_STAGE" == "final_app/stage2" ]]; then
   terraform -chdir=${INPUT_TF_STAGE} init -backend-config="key=${INPUT_STATE_KEY}.tfstate"
   terraform -chdir=${INPUT_TF_STAGE} apply -auto-approve -var="ARM_CLIENT_ID=${INPUT_ARM_CLIENT_ID}" -var="ARM_CLIENT_SECRET=${INPUT_ARM_CLIENT_SECRET}" -var="DJANGO_SECRET_KEY_PROD=${INPUT_DJANGO_SECRET_KEY_PROD}"
 elif [[ "$TF_STAGE" == "final_app/stage3" ]]; then
   terraform -chdir=${INPUT_TF_STAGE} init -backend-config="key=${INPUT_STATE_KEY}.tfstate"
-  terraform -chdir=${INPUT_TF_STAGE} plan -out=tfplan
-  terraform -chdir=${INPUT_TF_STAGE} apply tfplan
+  terraform -chdir=${INPUT_TF_STAGE} plan -out=${INPUT_TF_STAGE}.tfplan
+  terraform -chdir=${INPUT_TF_STAGE} apply ${INPUT_TF_STAGE}.tfplan
 fi
