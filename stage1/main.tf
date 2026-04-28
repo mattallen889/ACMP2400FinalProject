@@ -18,7 +18,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_container_registry" "mattallen_acr" {
-  name = "acrmattallenacmp2400"
+  name = "acrmattallen889acmp2400"
   resource_group_name = "rg-mattallen889" #changedfrommattallen
   location = "Central US"
   sku = "Basic"
