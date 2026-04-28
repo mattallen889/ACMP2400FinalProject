@@ -16,7 +16,7 @@ if [[ "$TF_STAGE" == "final_app/stage1" ]]; then
   terraform -chdir=${INPUT_TF_STAGE} apply ${INPUT_TF_STAGE}.tfplan
 if [[ "$TF_STAGE" == "final_app/stage2" ]]; then
   terraform -chdir=${INPUT_TF_STAGE} init -backend-config="key=${INPUT_STATE_KEY}.tfstate"
-  terraform -chdir=${INPUT_TF_STAGE} apply auto-approve -var="ARM_CLIENT_ID=${INPUT_ARM_CLIENT_ID}" -var="ARM_CLIENT_SECRET=${INPUT_ARM_CLIENT_SECRET}" -var="DJANGO_SECRET_KEY_PROD=${INPUT_DJANGO_SECRET_KEY_PROD}"
+  terraform -chdir=${INPUT_TF_STAGE} apply -auto-approve -var="ARM_CLIENT_ID=${INPUT_ARM_CLIENT_ID}" -var="ARM_CLIENT_SECRET=${INPUT_ARM_CLIENT_SECRET}" -var="DJANGO_SECRET_KEY_PROD=${INPUT_DJANGO_SECRET_KEY_PROD}"
 if [[ "$TF_STAGE" == "final_app/stage3" ]]; then
   terraform -chdir=${INPUT_TF_STAGE} init -backend-config="key=${INPUT_STATE_KEY}.tfstate"
   terraform -chdir=${INPUT_TF_STAGE} plan -out=${INPUT_TF_STAGE}.tfplan
