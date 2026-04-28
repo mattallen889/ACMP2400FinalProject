@@ -4,6 +4,10 @@ RUN apt-get update && apt-get install --no-install-recommends -y curl ca-certifi
     curl -sSfL https://get.anchore.io/syft | sh -s -- -b /usr/local/bin && \
     curl -sSfL https://get.anchore.io/grype | sh -s -- -b /usr/local/bin
 
-COPY entrypoint.sh .
+COPY entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["bash", "entrypoint.sh"]
+ENTRYPOINT ["bash", "/entrypoint.sh"]
+
+
+
+
