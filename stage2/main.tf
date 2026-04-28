@@ -59,4 +59,5 @@ resource "azurerm_container_group" "aci-mattallen-acmp" {
     username = var.ARM_CLIENT_ID
     password = var.ARM_CLIENT_SECRET
   }
-}  
+}
+}
