@@ -2,7 +2,7 @@ terraform {
   required_providers {
     azurerm = {
       source = "hashicorp/azurerm"
-      version = "4.68.0"
+      version = "4.70.0"
     }
   }
   backend "azurerm" {
@@ -19,7 +19,7 @@ provider "azurerm" {
 
 resource "azurerm_container_registry" "mattallen_acr" {
   name = "acrmattallenacmp2400"
-  resource_group_name = "rg-mattallen"
+  resource_group_name = "rg-mattallen-raya"
   location = "Central US"
   sku = "Basic"
   admin_enabled = false
