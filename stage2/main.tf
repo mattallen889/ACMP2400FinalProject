@@ -1,4 +1,4 @@
-variable " ARM_CLIENT_ID" {}
+variable "ARM_CLIENT_ID" {}
 variable "ARM_CLIENT_SECRET" {}
 variable "DJANGO_SECRET_KEY_PROD" {}
 
