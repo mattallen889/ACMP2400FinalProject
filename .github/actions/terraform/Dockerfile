@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y terraform
 
 WORKDIR /github/workspace
 
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh .RUN chmod +x entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
