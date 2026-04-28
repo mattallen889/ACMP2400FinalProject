@@ -19,7 +19,7 @@ provider "azurerm" {
 
 resource "azurerm_container_registry" "mattallen_acr" {
   name = "acrmattallenacmp2400"
-  resource_group_name = "rg-mattallen-raya"
+  resource_group_name = "rg-mattallen"
   location = "Central US"
   sku = "Basic"
   admin_enabled = false
